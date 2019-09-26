@@ -1,0 +1,14 @@
+create a function that does the following
+1. takes a string as input and returns the reverse of the string
+2. given an integer reverses the the integer
+3. given a number, checks whether its a prime number or not.
+4. given a string of characters, function returns the character with the most occurrence
+5. given two strings, compare if the string has the same number of unique characters.
+6. given a string of characters, fn should count and return the number of vowels in the string
+7. given a string, fn should convert it to capital letters and return .
+8. given an array of numbers calculate the mean median and mode and return. result should be in {mode:, median:, mean}
+9. for a given number find all the prime number from zero to that number. fn should return array of the numbers
+10. for a given number generate the n factorial of that number, fn should return array of the factorials
+
+
+CODE SHOULD BE PUSHED TO GITHUB AND LINK SENT TO BE ON OR BEFORE COB. THANK YOU.
