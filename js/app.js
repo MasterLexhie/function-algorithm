@@ -1,131 +1,149 @@
 // === first task ===
 
-const stringReverse = () => {
-  let input = document.getElementById("input-one").value;
-  let result = document.getElementById("result-one");
-
-  let newInput = input
-    .split("")
-    .reverse()
-    .join("");
-  if (isNaN(newInput)) {
-    result.innerHTML = newInput;
+const stringReverse = str => {
+  if (isNaN(str)) {
+    str = str
+      .split("")
+      .reverse()
+      .join("");
+    console.log("stringReverse", str);
+    return;
+  } else {
+    console.log(`${str} is not a string, please use a alphabets instead`);
+    return;
   }
 };
+stringReverse("hello");
 
 // === second task ===
 
-const integerReverse = () => {
-  let input = document.getElementById("input-two").value;
-  let result = document.getElementById("result-two");
+const integerReverse = int => {
+  if (Number.isInteger(int)) {
+    int =
+      parseInt(
+        int
+          .toString()
+          .split("")
+          .reverse()
+          .join("")
+      ) * Math.sign(int);
 
-  let newInput =
-    parseFloat(
-      input
-        .split("")
-        .reverse()
-        .join("")
-    ) * Math.sign(input);
-  if (Number.isInteger(newInput)) {
-    result.innerHTML = newInput;
+    console.log("integerReverse", int);
+    return;
+  } else {
+    console.error(`${int} is not an integer, please use an integer instead`);
+    return;
   }
 };
 
-// === third task ===
-const checkPrimeNumber = () => {
-  let input = document.getElementById("input-three").value;
-  let result = document.getElementById("result-three");
-  isAPrimeNumber = `${input} is a Prime Number`;
-  notAPrimeNumber = `${input} is not a Prime Number`;
+integerReverse(-673.43);
 
-  input = parseInt(input);
+// // === third task ===
+const checkPrimeNumber = num => {
+  if (!Number(num)) {
+    return alert(`${num} is not a number, Please input a number`);
+  }
 
-  for (let i = 2; i <= input; i++) {
-    if (input === i) {
-      return (result.innerHTML = isAPrimeNumber);
-    }
-    if (input % i === 0) {
-      return (result.innerHTML = notAPrimeNumber);
-      if (input % (i + 1) === 1 || input === 5 || input % (i + 5) === 1) {
-        return (result.innerHTML = isAPrimeNumber);
-      }
-      return;
-    } else if (input % Math.sqrt(input) === 0) {
-      return (result.innerHTML = notAPrimeNumber);
+  newInput = Number(num);
+
+  (inputNumber = ""), num;
+
+  for (i = 2; i <= num / 2; i++) {
+    if (num % i == 0) {
+      inputNumber = 1;
+      break;
     }
   }
+  if (inputNumber == 0) {
+    console.log("The input number is a Prime number");
+  } else {
+    console.log("The input number is not a Prime Number");
+  }
+  return newInput;
 };
+
+checkPrimeNumber(225);
 
 // === fourth task ===
 
-const mostOccurring = () => {
-  let input = document.getElementById("input-four").value;
-  let result = document.getElementById("result-four");
-
+const mostOccurring = str => {
   let character = 0;
   let maxCharacter = "";
 
-  input.split("").map(char => {
-    if (input.split(char).length > character) {
-      character = input.split(char).length;
+  str.split("").map(char => {
+    if (str.split(char).length > character) {
+      character = str.split(char).length;
       maxCharacter = char;
     }
   });
-
-  return (result.innerHTML = maxCharacter);
+  console.log("mostOccurring", maxCharacter);
 };
+
+mostOccurring("12s3w2ed3432222");
 
 // === fifth task ===
 
-const compareCharacter = () => {
-  let inputOne = document.getElementById("input-five-one").value;
-  let inputTwo = document.getElementById("input-five-two").value;
-  let result = document.getElementById("result-five");
+const compareCharacter = (str1, str2) => {
   const objMap = {};
-  inputOne = inputOne.split("");
-  inputTwo = inputTwo.split("");
+  inputOne = str1.split("");
+  inputTwo = str2.split("");
 
   inputOne.forEach(char1 =>
     inputTwo.forEach(char2 => {
       if (char1 === char2) {
         objMap[char1] = objMap[char2];
-        return (result.innerHTML = Object.keys(objMap).length);
+        console.log("compareCharacter", Object.keys(objMap).length);
+        return;
+      } else {
+        console.log(`No same number of unique characters`);
+        return;
       }
+
+      return;
     })
   );
 };
 
+compareCharacter("hello", "ello");
+
 // === sixth task ===
 
-const checkVowelInCharacter = () => {
-  let input = document.getElementById("input-six").value;
-  let result = document.getElementById("result-six");
-  let vowels = input.match(/[a,e,i,o,u]/gi);
+const checkVowelInCharacter = char => {
+  let vowels = char.match(/[a,e,i,o,u]/gi);
 
   if (vowels) {
     let vowel = vowels.length;
-    return (result.innerHTML = vowel);
+    console.log("checkVowelInCharacter", vowel);
+    return;
+  } else {
+    console.log(`${char} has no vowels in it`);
+    return;
   }
 };
 
+checkVowelInCharacter("andrew");
+
 // === seven task ===
 
-const upperCase = () => {
-  let input = document.getElementById("input-seven").value;
-  let result = document.getElementById("result-seven");
-
-  input = input.toUpperCase();
-  return (result.innerHTML = input);
+const upperCase = char => {
+  input = char.toUpperCase();
+  console.log("upperCase", input);
+  return;
 };
 
-// === eight task === not complete
+// upperCase("andrew");
 
-const statistics = () => {
-  let input = document.getElementById("input-eight").value;
-  let result = document.getElementById("result-eight");
-  let numberArray = input.split("");
+// === eight task ===
+
+const statistics = num => {
+  let numberArray = num.toString().split("");
   let character = 0;
   let maxCharacter = "";
+  if (!Number(num)) {
+    return alert(`${num} is not a number, Please input a number`);
+  }
+
+  // Mean value
 
   let totalNum = numberArray
     .map(num => parseFloat(num))
@@ -133,12 +151,19 @@ const statistics = () => {
 
   let mean = totalNum / numberArray.length;
 
-  let mode = input.split("").map(char => {
-    if (input.split(Number(char)).length > character) {
-      character = input.split(Number(char)).length;
-      maxCharacter = char;
-    }
-  });
+  // Mode value
+
+  let mode = num
+    .toString()
+    .split("")
+    .map(char => {
+      if (num.toString().split(Number(char)).length > character) {
+        character = num.toString().split(Number(char)).length;
+        maxCharacter = char;
+      }
+    });
+
+  // Median value
 
   let sortedNumber = numberArray
     .map(num => {
@@ -146,50 +171,49 @@ const statistics = () => {
     })
     .sort();
 
-  console.log("sortedNumber", sortedNumber);
-
   let midNum = Math.floor(sortedNumber.length / 2);
-
   let median =
     sortedNumber.length % 2 !== 0
-      ? numberArray[midNum]
-      : (numberArray[midNum - 1] + numberArray[midNum]) / 2;
+      ? sortedNumber[midNum]
+      : (sortedNumber[midNum - 1] + sortedNumber[midNum]) / 2;
 
-  console.log("median", median);
-
-  return (result.innerHTML = `{ mode: "${maxCharacter}", median: "", mean: ${mean}}`);
+  console.log(
+    `statistics: { mode: "${maxCharacter}", median: "${median}", mean: ${mean}}`
+  );
+  return;
 };
+
+statistics(123456);
 
 //  === ninth task === not complete
 
-const primeNumberArray = () => {
-  let input = document.getElementById("input-nine").value;
-  let result = document.getElementById("result-nine");
-  let primeNumberList = [];
-  input = parseFloat(input);
+// const primeNumberArray = num => {
+//   let primeNumberList = [];
+//   input = parseFloat(input);
 
-  for (i = 0; i <= input; i++) {
-    primeNumberList = [...primeNumberList, i];
+//   for (i = 2; i <= input; i++) {
+//     primeNumberList = [...primeNumberList, i];
+//   }
+
+//   // primeNumberList = primeNumberList.filter(num => {
+//   //   num % 2 === 0;
+//   // });
+//   console.log("prime number array", primeNumberList);
+// };
+
+// === tenth task ===
+
+const factorial = num => {
+  newNumber = 1;
+  if (Number(num)) {
+    for (i = 1; i <= num; i++) {
+      newNumber = newNumber * i;
+    }
+  } else {
+    console.log(`${num} is not a number`);
+    return;
   }
-
-  // console.log("prime number array", list);
+  console.log(`${num} factorial`, newNumber);
 };
 
-// === tenth task === not complete
-
-const factorial = () => {
-  let input = document.getElementById("input-ten").value;
-  let result = document.getElementById("result-ten");
-
-  // input === 0 || input === 1 ? 1 : '';
-  // for (var i = 1; i >= input; i--) {
-  //   input *= i;
-  //   input = input * i
-  //   console.log('input', input*=i)
-  // }
-  // return input;
-  for (i = 1; i >= input; i++) {
-    input = input * i;
-    console.log("input", input);
-  }
-};
+factorial(5);
