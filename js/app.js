@@ -6,13 +6,12 @@ const stringReverse = str => {
       .split("")
       .reverse()
       .join("");
-    console.log("stringReverse", str);
-    return;
+    return str;
   } else {
-    console.log(`${str} is not a string, please use a alphabets instead`);
-    return;
+    return alert(`${str} is not a string`);
   }
 };
+
 stringReverse("hello");
 
 // === second task ===
@@ -27,18 +26,15 @@ const integerReverse = int => {
           .reverse()
           .join("")
       ) * Math.sign(int);
-
-    console.log("integerReverse", int);
-    return;
+    return int;
   } else {
-    console.error(`${int} is not an integer, please use an integer instead`);
-    return;
+    return alert(`${int} is not an integer`);
   }
 };
 
 integerReverse(-673.43);
 
-// // === third task ===
+// === third task ===
 const checkPrimeNumber = num => {
   if (!Number(num)) {
     return alert(`${num} is not a number, Please input a number`);
@@ -55,29 +51,35 @@ const checkPrimeNumber = num => {
     }
   }
   if (inputNumber == 0) {
-    console.log("The input number is a Prime number");
+    return alert(`${newInput} is a prime number`);
   } else {
-    console.log("The input number is not a Prime Number");
+    return alert(`${newInput} is not a prime number`);
   }
-  return newInput;
+  return;
 };
 
 checkPrimeNumber(225);
 
 // === fourth task ===
 
-const mostOccurring = str => {
-  let character = 0;
-  let maxCharacter = "";
+function mostOccurring(str) {
+  const charArray = str.split("").filter(Boolean);
 
-  str.split("").map(char => {
-    if (str.split(char).length > character) {
-      character = str.split(char).length;
-      maxCharacter = char;
+  const charCount = {};
+
+  for (const char of charArray) {
+    charCount[char] = charCount[char] + 1 || 1;
+  }
+  let maxCount = 0;
+  let maxChar = "";
+  for (const [key, value] of Object.entries(charCount)) {
+    if (value > maxCount) {
+      maxCount = value;
+      maxChar = key;
     }
-  });
-  console.log("mostOccurring", maxCharacter);
-};
+  }
+  return maxChar;
+}
 
 mostOccurring("12s3w2ed3432222");
 
@@ -93,12 +95,7 @@ const compareCharacter = (str1, str2) => {
       if (char1 === char2) {
         objMap[char1] = objMap[char2];
         console.log("compareCharacter", Object.keys(objMap).length);
-        return;
-      } else {
-        console.log(`No same number of unique characters`);
-        return;
       }
-
       return;
     })
   );
@@ -113,11 +110,9 @@ const checkVowelInCharacter = char => {
 
   if (vowels) {
     let vowel = vowels.length;
-    console.log("checkVowelInCharacter", vowel);
-    return;
+    return vowel;
   } else {
-    console.log(`${char} has no vowels in it`);
-    return;
+    return alert(`${vowel} does not contain any vowel`);
   }
 };
 
@@ -127,11 +122,10 @@ checkVowelInCharacter("andrew");
 
 const upperCase = char => {
   input = char.toUpperCase();
-  console.log("upperCase", input);
-  return;
+  return input;
 };
 
-// upperCase("andrew");
+upperCase("andrew");
 
 // === eight task ===
 
@@ -177,29 +171,41 @@ const statistics = num => {
       ? sortedNumber[midNum]
       : (sortedNumber[midNum - 1] + sortedNumber[midNum]) / 2;
 
-  console.log(
-    `statistics: { mode: "${maxCharacter}", median: "${median}", mean: ${mean}}`
-  );
-  return;
+  return `statistics: { mode: "${maxCharacter}", median: "${median}", mean: ${mean}}`;
 };
 
 statistics(123456);
 
 //  === ninth task === not complete
 
-// const primeNumberArray = num => {
-//   let primeNumberList = [];
-//   input = parseFloat(input);
+function primeNumberArray(number) {
+  let primes = [];
 
-//   for (i = 2; i <= input; i++) {
-//     primeNumberList = [...primeNumberList, i];
-//   }
+  if (number < 2) {
+    return primes;
+  }
 
-//   // primeNumberList = primeNumberList.filter(num => {
-//   //   num % 2 === 0;
-//   // });
-//   console.log("prime number array", primeNumberList);
-// };
+  primes.push(2);
+
+  let isPrime = true;
+
+  for (let i = 3; i <= number; i++) {
+    isPrime = true;
+
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        isPrime = false;
+      }
+    }
+
+    if (isPrime) {
+      primes.push(i);
+    }
+  }
+  return primes;
+}
+
+primeNumberArray(9);
 
 // === tenth task ===
 
@@ -210,10 +216,9 @@ const factorial = num => {
       newNumber = newNumber * i;
     }
   } else {
-    console.log(`${num} is not a number`);
-    return;
+    return alert(`${num} is not a number`);
   }
-  console.log(`${num} factorial`, newNumber);
+  return newNumber;
 };
 
 factorial(5);
